@@ -1,0 +1,31 @@
+{
+  "name": "proquest",
+  "version": "0.0.0",
+  "description": "Micro XHR wrapper using promises",
+  "main": "proquest.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/sorentwo/proquest"
+  },
+  "keywords": [
+    "xhr",
+    "ajax",
+    "request",
+    "promise"
+  ],
+  "author": "Parker Selbert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sorentwo/proquest/issues"
+  },
+  "homepage": "https://github.com/sorentwo/proquest",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "es6-promise": "^1.0.0",
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3"
+  }
+}
