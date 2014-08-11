@@ -4,7 +4,7 @@ Ultra light wrapper around XHR requests that returns Promises for composition.
 
 ## Installation
 
-Designed for usage with CJS, namely via [browserify](http://browserify.org/).
+Designed for usage with CJS, namely via [browserify](browserify).
 
 ```bash
 npm install proquest --save-dev
@@ -13,7 +13,7 @@ npm install proquest --save-dev
 Then simply require it:
 
 ```javascript
-var Request = require('proquest');
+var Request = require('proquest').Request;
 ```
 
 ## Usage
@@ -40,4 +40,30 @@ request
   });
 ```
 
+Often in the context of an application each request will share most headers.
+This can be achieved easily with a `partial` request:
+
+```javascript
+// Compose a request using method, url, data, or header options.
+var partial = Request.partial({
+  header: {
+    'Authorization' : 'token abc123'
+    'Content-Type'  : 'application/json'
+    'Accept'        : 'application/json'
+  }
+});
+
+// Store the partial request for use throughout the application.
+MyApp.request = partial;
+
+// Elsewhere, use the request by invoking and completing it.
+var request = partial({ method: 'HEAD', url: '/status' });
+```
+
+## Notes
+
+Proquest expects a modern XHR api underneath. That means IE8 and below isn't
+going to work.
+
+[browserify]: http://browserify.org/
 [superagent]: http://visionmedia.github.io/superagent/

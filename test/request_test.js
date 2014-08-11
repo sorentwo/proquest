@@ -3,6 +3,21 @@ var sinon  = require('sinon');
 var Request = require('../proquest').Request;
 
 describe('Request', function() {
+  describe('.partial', function() {
+    it('composes a request with pre-defined attributes', function() {
+      var partial = Request.partial({
+        method: 'GET',
+        header: { 'Accept' : 'application/json' }
+      });
+
+      var request = partial({method: 'HEAD', url: '/endpoint'});
+
+      expect(request.method).to.eq('HEAD');
+      expect(request.url).to.eq('/endpoint');
+      expect(request.header).to.eql({ 'Accept' : 'application/json' });
+    });
+  });
+
   describe('#set', function() {
     it('updates the header object', function() {
       var request = new Request('get', '/');
