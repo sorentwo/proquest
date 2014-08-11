@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var sinon  = require('sinon');
-var Request = require('../proquest');
+var Request = require('../proquest').Request;
 
 describe('Request', function() {
   describe('#set', function() {

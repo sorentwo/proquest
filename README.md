@@ -24,7 +24,7 @@ extremely paired back way.
 ```javascript
 // Composing a request
 
-var Request = require('proquest');
+var Request = require('proquest').Request;
 var request = new Request('POST', 'https://example.com/things');
 
 request
@@ -32,11 +32,12 @@ request
   .set('Content-Type', 'application/json')
   .set('Authorization', 'token abcdefg1234567')
   .send({ name: 'New Thing', tags: ['a', 'b', 'c'] })
-
-request
   .end()
-  .then(function(response) { console.log(response.body); })
-  .catch(function(response) { console.log('Failure!'); });
+  .then(function(response) {
+    console.log('Success!', response.body);
+  }, function(response) {
+    console.log('Failure!', response.status);
+  });
 ```
 
 [superagent]: http://visionmedia.github.io/superagent/
