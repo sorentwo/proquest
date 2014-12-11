@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/sorentwo/proquest.svg?branch=master)](https://travis-ci.org/sorentwo/proquest)
+[![npm version](https://badge.fury.io/js/proquest.svg)](http://badge.fury.io/js/proquest)
+
 # Proquest (Promise Request)
 
 Ultra light wrapper around XHR requests that returns Promises for composition.
