@@ -1,5 +1,5 @@
-var expect = require('chai').expect;
-var sinon  = require('sinon');
+var expect  = require('chai').expect;
+var sinon   = require('sinon');
 var Request = require('../proquest').Request;
 
 describe('Request', function() {
@@ -7,7 +7,8 @@ describe('Request', function() {
     it('composes a request with pre-defined attributes', function() {
       var partial = Request.partial({
         method: 'GET',
-        header: { 'Accept' : 'application/json' }
+        header: { 'Accept' : 'application/json' },
+        catcher: function(res) {}
       });
 
       var request = partial({method: 'HEAD', url: '/endpoint'});
@@ -15,6 +16,7 @@ describe('Request', function() {
       expect(request.method).to.eq('HEAD');
       expect(request.url).to.eq('/endpoint');
       expect(request.header).to.eql({ 'Accept' : 'application/json' });
+      expect(request.catcher).to.exist;
     });
   });
 
@@ -28,16 +30,25 @@ describe('Request', function() {
     });
   });
 
+  describe('#catch', function() {
+    it('sets a default catcher function', function() {
+      var request = new Request('get', '/');
+      var pong    = function() {};
+
+      request.catch(pong);
+
+      expect(request.catcher).to.eql(pong);
+    });
+  });
+
   describe('#send', function() {
     it('merges the object into data', function() {
       var request = new Request('post', '/');
 
       request.send({ id: 100, name: 'Hello' });
-
       expect(request.data).to.eql({ id: 100, name: 'Hello' });
 
       request.send({ type: 'thing' });
-
       expect(request.data).to.include({ type: 'thing' });
     });
   });

@@ -63,6 +63,16 @@ MyApp.request = partial;
 var request = partial({ method: 'HEAD', url: '/status' });
 ```
 
+Inject a default error handler into all requests:
+
+```javascript
+Request.partial({
+  catch: function(response) {
+    console.log('failed with a status of: ' + response.status);
+  }
+});
+```
+
 ## Notes
 
 Proquest expects a modern XHR api underneath. That means IE8 and below isn't
