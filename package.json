@@ -4,6 +4,7 @@
   "description": "Micro XHR wrapper using promises",
   "main": "proquest.js",
   "scripts": {
+    "lint": "jshint proquest.js lib",
     "test": "mocha"
   },
   "repository": {
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
+    "jshint": "^2.5.10",
     "mocha": "^1.21.4",
     "sinon": "^1.10.3"
   }
