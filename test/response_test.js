@@ -13,4 +13,16 @@ describe('Response', function() {
 
     expect(response.body).to.be.null;
   });
+
+  it('swallows errors during json parsing', function() {
+    var xhr = {
+      getAllResponseHeaders: function() { return ''; },
+      responseText: '<html>Error</html>',
+      status: 500
+    };
+
+    var response = new Response(xhr);
+
+    expect(response.body).to.be.null;
+  });
 });
