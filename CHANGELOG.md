@@ -1,3 +1,8 @@
+## 0.3.0
+
+* Fixed: Swallow errors when parsing JSON. This prevents errors for servers that
+  return an HTML error response (404, 500).
+
 ## 0.2.0
 
 * Added: Append a `catch` handler on `end` when provided. This allows universal
