@@ -1,6 +1,6 @@
 {
   "name": "proquest",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Micro XHR wrapper using promises",
   "main": "proquest.js",
   "scripts": {
@@ -24,12 +24,12 @@
   },
   "homepage": "https://github.com/sorentwo/proquest",
   "dependencies": {
-    "es6-promise": "^1.0.0"
+    "es6-promise": "^3.2.1"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
+    "chai": "^3.5.0",
     "jshint": "^2.5.10",
-    "mocha": "^1.21.4",
-    "sinon": "^1.10.3"
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5"
   }
 }

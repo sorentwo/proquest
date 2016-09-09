@@ -1,3 +1,7 @@
+## 0.4.0 - 2016-09-08
+
+* Added: Expose an `abort` function on the request object.
+
 ## 0.3.0
 
 * Fixed: Swallow errors when parsing JSON. This prevents errors for servers that
