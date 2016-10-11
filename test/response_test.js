@@ -17,12 +17,22 @@ describe('Response', function() {
   it('swallows errors during json parsing', function() {
     var xhr = {
       getAllResponseHeaders: function() { return ''; },
-      responseText: '<html>Error</html>',
-      status: 500
+      responseText: '<html>Not Found</html>',
+      status: 404
     };
 
     var response = new Response(xhr);
 
     expect(response.body).to.be.null;
+  });
+
+  it('re-throws errors so they can be caught by the request/response consumer', function() {
+    var xhr = {
+      getAllResponseHeaders: function() { return ''; },
+      responseText: '<html>Server Error</html>',
+      status: 500
+    }
+
+    expect(function() { return new Response(xhr); }).to.throw(Error);
   });
 });
